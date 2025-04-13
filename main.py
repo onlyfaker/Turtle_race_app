@@ -4,6 +4,7 @@ import random
 # todo - make it so multiple people can place bets!
 # todo -maybe add like betting
 # todo - fix an error where 2 colors win
+# todo - add odds feature
 screen = Screen()
 screen.setup(width=500,height=400)
 turtle_colors = ["red","green","purple","black","orange","blue","yellow"]
