@@ -1,6 +1,7 @@
 from turtle import Turtle, Screen
 import turtle_blueprint
 import random
+# TODO - insted of type the winner, make the user click one of the options
 
 screen = Screen()
 screen.setup(width=500,height=400)
