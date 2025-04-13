@@ -1,13 +1,14 @@
 import time
 from turtle import Turtle, Screen
-import turtle_blueprint
 import random
-
+# todo - make it so multiple people can place bets!
+# todo -maybe add like betting
+# todo - fix an error where 2 colors win
 screen = Screen()
 screen.setup(width=500,height=400)
-turtle_colors = ["red","green","purple","black","orange","blue"]
+turtle_colors = ["red","green","purple","black","orange","blue","yellow"]
 user_input = screen.textinput(title="Place Your Bets",prompt="Which Turtle will win the Race? "
-                                                             "\nChoose one of the colors(red,grren,purple,black,orange,blue:")
+                                                             "\nChoose one of the colors(red,green,purple,black,orange,blue,yellow)")
 correct_input = True
 # check if the input is valid, as turtle doesn't have window with buttons to select color
 while correct_input:
@@ -17,14 +18,13 @@ while correct_input:
     elif user_input not in turtle_colors:
         print("invalid input, try again!")
         user_input = screen.textinput(title="Place Your Bets", prompt="Which Turtle will win the Race? "
-                                                                      "\nChoose one of the colors(red,grren,purple,black,orange,blue:")
+                                                                      "\nChoose one of the colors(red,grren,purple,black,orange,blue)")
     else:
         correct_input = False
 
 all_turtles = []
-is_game_on = False
-
 turtle_position = -100
+#creating turtles
 for color in turtle_colors:
     new_turtle = Turtle(shape="turtle")
     new_turtle.color(color)
@@ -33,9 +33,8 @@ for color in turtle_colors:
     turtle_position+=40
     all_turtles.append(new_turtle)
 
-if user_input:
-    is_game_on=True
-
+is_game_on = True
+#unit we get a winner we race!
 while is_game_on:
     for turtle in all_turtles:
         turtle.speed(6)
@@ -49,6 +48,6 @@ while is_game_on:
             else:
                 print(f"You LOST! The winner is {winner}")
 
-
+screen.exitonclick()
 time.sleep(5)
 screen.bye()
