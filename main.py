@@ -1,13 +1,25 @@
+import time
 from turtle import Turtle, Screen
 import turtle_blueprint
 import random
-# TODO - insted of type the winner, make the user click one of the options
 
 screen = Screen()
 screen.setup(width=500,height=400)
 turtle_colors = ["red","green","purple","black","orange","blue"]
 user_input = screen.textinput(title="Place Your Bets",prompt="Which Turtle will win the Race? "
                                                              "\nChoose one of the colors(red,grren,purple,black,orange,blue:")
+correct_input = True
+# check if the input is valid, as turtle doesn't have window with buttons to select color
+while correct_input:
+    if user_input is None:
+        print("The race is Cancelled")
+        exit()
+    elif user_input not in turtle_colors:
+        print("invalid input, try again!")
+        user_input = screen.textinput(title="Place Your Bets", prompt="Which Turtle will win the Race? "
+                                                                      "\nChoose one of the colors(red,grren,purple,black,orange,blue:")
+    else:
+        correct_input = False
 
 all_turtles = []
 is_game_on = False
@@ -29,7 +41,7 @@ while is_game_on:
         turtle.speed(6)
         move_forward = random.randint(0, 10)
         turtle.forward(move_forward)
-        if turtle.xcor()>=235:
+        if turtle.xcor()>=230:
             is_game_on=False
             winner = turtle.pencolor()
             if user_input == winner:
@@ -38,5 +50,5 @@ while is_game_on:
                 print(f"You LOST! The winner is {winner}")
 
 
-screen.exitonclick()
-
+time.sleep(5)
+screen.bye()
