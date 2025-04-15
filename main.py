@@ -52,6 +52,6 @@ if winner:
     else:
         print(f"You LOST! The winner is {winner}")
 
-screen.exitonclick()
 time.sleep(5)
 screen.bye()
+
